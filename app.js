@@ -15,8 +15,6 @@ function initApp() {
   document.querySelector("#search-input").addEventListener("input", filterGames);
   document.querySelector("#genre-select").addEventListener("change", filterGames);
   document.querySelector("#sort-select").addEventListener("change", filterGames);
-  document.querySelector("#rating-from").addEventListener("input", filterGames);
-  document.querySelector("#rating-to").addEventListener("input", filterGames);
 
   // Event listener for clear-knappen - rydder alle filtre
   document.querySelector("#clear-filters").addEventListener("click", clearAllFilters);
@@ -65,7 +63,6 @@ function displayGame(game) {
       <div class="game-info">
         <h3>${game.title} <span class="game-year">(${game.year})</span></h3>
         <p class="game-genre">${game.genre}</p>
-        <p class="game-rating">⭐ ${game.rating}</p>
       </div>
     </article>
   `;
@@ -126,7 +123,6 @@ function showGameModal(game) {
       <p class="game-playtime">${game.playtime}</p>
       <p class="game-players">${game.players}</p>
       <p class="game-language">${game.language}</p>
-      <p class="game-rating">⭐ ${game.rating}</p>
       <p class="game-age">${game.age}</p>
       <p class="game-difficulty">${game.difficulty}</p>
       <p class="game-location">${game.location}</p>
@@ -147,8 +143,6 @@ function clearAllFilters() {
   document.querySelector("#search-input").value = "";
   document.querySelector("#genre-select").value = "all";
   document.querySelector("#sort-select").value = "none";
-  document.querySelector("#rating-from").value = "";
-  document.querySelector("#rating-to").value = "";
 
   // Kør filtrering igen (vil vise alle film da alle filtre er ryddet)
   filterGames();
@@ -160,10 +154,6 @@ function filterGames() {
   const searchValue = document.querySelector("#search-input").value.toLowerCase(); // Konvertér til lowercase for case-insensitive søgning
   const genreValue = document.querySelector("#genre-select").value;
   const sortValue = document.querySelector("#sort-select").value;
-
-  // Number() konverterer string til tal, || 0 giver default værdi hvis tomt
-  const ratingFrom = Number(document.querySelector("#rating-from").value) || 0;
-  const ratingTo = Number(document.querySelector("#rating-to").value) || 5;
 
   // Start med alle spil - kopiér til ny variabel så vi ikke ændrer originalen
   let filteredGames = allGames;
@@ -186,16 +176,6 @@ function filterGames() {
     });
   }
 
-
-  // FILTER 4: Rating range - filtrer spil mellem to ratings
-  if (ratingFrom > 0 || ratingTo < 10) {
-    // Kun filtrer hvis der er sat grænser
-    filteredGames = filteredGames.filter(game => {
-      // Check om spillets rating er mellem min og max værdi
-      return game.rating >= ratingFrom && game.rating <= ratingTo;
-    });
-  }
-
   // SORTERING (altid til sidst efter alle filtre er anvendt)
   if (sortValue === "title") {
     // Alfabetisk sortering - localeCompare() håndterer danske bogstaver korrekt
@@ -203,11 +183,8 @@ function filterGames() {
   } else if (sortValue === "year") {
     // Sortér på år (nyeste først) - b - a giver descending order
     filteredGames.sort((a, b) => b.year - a.year);
-  } else if (sortValue === "rating") {
-    // Sortér på rating (højeste først) - b - a giver descending order
-    filteredGames.sort((a, b) => b.rating - a.rating);
   }
-
+  
   // Vis de filtrerede spil på siden
   displayGames(filteredGames);
 }
