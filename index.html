@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Spil oversigt</title>
     <link rel="stylesheet" href="app.css" />
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="images/favicon.ico" />
     <!--luckiest guy og poppins font-->
     <link
       href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
@@ -43,13 +43,12 @@
             </select>
           </div>
         </div>
-        
+
           <!-- Ryd alle filtre knap -->
           <button id="clear-filters" class="clear-btn">
             <span class="btn-icon">🗑️</span>
             <span class="btn-text">Nulstil filtre</span>
           </button>
-        </div>
       </section>
 
       <!-- spil grid -->
@@ -63,12 +62,12 @@
       <p>© RACE - Rasmus Cederdorff</p>
     </footer>
 
-    <!-- Game Detail Modal -->
+    <!-- Dialog med spildetaljer -->
     <dialog id="game-dialog">
       <form method="dialog">
-        <button id="close-dialog" aria-label="Close">✕</button>
+        <button id="close-dialog" aria-label="Luk">✕</button>
         <div id="dialog-content">
-          <!-- Game details will be injected here via JavaScript -->
+          <!-- Spildetaljer indsættes dynamisk via JavaScript -->
         </div>
       </form>
     </dialog>
