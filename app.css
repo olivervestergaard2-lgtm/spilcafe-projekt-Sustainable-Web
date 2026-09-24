@@ -75,13 +75,6 @@ main {
   margin-bottom: 1rem;
 }
 
-.filter-row-ranges {
-  display: grid;
-  grid-template-columns: 1fr 1fr auto;
-  gap: 1rem;
-  align-items: end;
-}
-
 /* Filter grupper */
 .filter-group {
   display: flex;
@@ -98,33 +91,11 @@ main {
   letter-spacing: 5px;
 }
 
-/* Range grupper */
-.range-group {
-  flex: 1;
-}
-
-.range-label {
-  margin-bottom: 0.5rem;
-}
-
-.range-inputs {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.range-separator {
-  color: var(--secondary-color);
-  font-weight: bold;
-  font-size: 1.2rem;
-}
-
 /* Input felter styling */
 #search-input,
 #genre-select,
-#sort-select,
-#rating-from,
-#rating-to {
+#sort-select
+ {
   background: rgb(125, 20, 20);
   color: var(--primary-text);
   border: 1px solid rgba(172, 198, 201, 0.3);
@@ -137,17 +108,13 @@ main {
 
 #search-input:focus,
 #genre-select:focus,
-#sort-select:focus,
-#rating-from:focus,
-#rating-to:focus {
+#sort-select:focus {
   outline: none;
   border-color: var(--third-color);
   box-shadow: 0 0 0 3px rgba(172, 198, 201, 0.2);
 }
 
-#search-input::placeholder,
-#rating-from::placeholder,
-#rating-to::placeholder {
+#search-input::placeholder {
   color: var(--primary-text);
   opacity: 0.6;
 }
@@ -281,20 +248,6 @@ footer p{
   margin-bottom: 0.75rem;
 }
 
-.game-rating {
-  color: var(--warning);
-  font-weight: 400;
-  margin-bottom: 0.5rem;
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-}
-
-.game-rating::before {
-  content: "⭐";
-}
-
-
 /* =====================
    MOVIE DIALOG
    ===================== */
@@ -413,21 +366,6 @@ dialog#game-dialog::backdrop {
   font-size: 1.1rem;
 }
 
-#dialog-content .game-rating {
-  color: var(--warning);
-  font-weight: 600;
-  font-size: 1.125rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-@media (max-width: 768px) {
-  #dialog-content .game-rating {
-    justify-content: center;
-  }
-}
-
 .game-description {
   color: var(--primary-text) !important;
   font-size: 1.1rem !important;
@@ -502,11 +440,6 @@ dialog#game-dialog::backdrop {
     gap: 1rem;
   }
 
-  .filter-row-ranges {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
   #clear-filters {
     justify-content: center;
   }
@@ -515,15 +448,6 @@ dialog#game-dialog::backdrop {
 @media (max-width: 600px) {
   .filterbar {
     padding: 1rem;
-  }
-
-  .range-inputs {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .range-separator {
-    transform: rotate(90deg);
   }
 
   #clear-filters {
