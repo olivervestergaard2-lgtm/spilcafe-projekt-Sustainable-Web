@@ -4,14 +4,14 @@
 // Start app når DOM er loaded (hele HTML siden er færdig med at indlæse)
 document.addEventListener("DOMContentLoaded", initApp);
 
-// Global variabel til alle film - tilgængelig for alle funktioner
+/// Global variabel til alle spil - tilgængelig for alle funktioner
 let allGames = [];
 
-// #1: Initialize the app - sæt event listeners og hent data
+// #1: Initialiser appen - sæt event listeners og hent data
 function initApp() {
-  getGames(); // Hent film data fra JSON fil
+  getGames(); // Hent spildata fra JSON-fil
 
-  // Event listeners for alle filtre - kører filterMovies når brugeren ændrer noget
+  // Event listeners for alle filtre - kører filterGames når brugeren ændrer noget
   document.querySelector("#search-input").addEventListener("input", filterGames);
   document.querySelector("#genre-select").addEventListener("change", filterGames);
   document.querySelector("#sort-select").addEventListener("change", filterGames);
@@ -20,7 +20,7 @@ function initApp() {
   document.querySelector("#clear-filters").addEventListener("click", clearAllFilters);
 }
 
-// #2: Fetch games from JSON file - asynkron funktion der henter data
+// #2: Hent spil fra JSON-fil
 async function getGames() {
   // Hent data fra URL - await venter på svar før vi går videre
   const response = await fetch("https://raw.githubusercontent.com/cederdorff/race/refs/heads/master/data/games.json");
@@ -33,7 +33,7 @@ async function getGames() {
 }
 
 // ===== VISNING AF SPIL =====
-// #3: Display all games - vis en liste af spil på siden
+// #3: Vis alle spil på siden
 function displayGames(games) {
   const gameList = document.querySelector("#game-list"); // Find container til spil
   gameList.innerHTML = ""; // Ryd gammel liste (fjern alt HTML indhold)
@@ -50,7 +50,7 @@ function displayGames(games) {
   }
 }
 
-// #4: Render a single game card and add event listeners - lav et spil kort
+// #4: Opret et spilkort og tilføj event listeners
 function displayGame(game) {
   const gameList = document.querySelector("#game-list"); // Find container til spil
 
@@ -75,14 +75,14 @@ function displayGame(game) {
 
   // Tilføj click event til kortet - når brugeren klikker på kortet
   newCard.addEventListener("click", function () {
-    showGameModal(game); // Vis modal med spil detaljer
+   showGameModal(game); // Vis modal med spil detaljer
   });
 
   // Tilføj keyboard support (Enter og mellemrum) for tilgængelighed
   newCard.addEventListener("keydown", function (event) {
     if (event.key === "Enter" || event.key === " ") {
       event.preventDefault(); // Forhindre scroll ved mellemrum
-      showgameModal(Game); // Vis modal med spil detaljer
+      showGameModal(game); // Vis modal med spil detaljer
     }
   });
 }
@@ -144,7 +144,7 @@ function clearAllFilters() {
   document.querySelector("#genre-select").value = "all";
   document.querySelector("#sort-select").value = "none";
 
-  // Kør filtrering igen (vil vise alle film da alle filtre er ryddet)
+  // Kør filtrering igen og vis alle spil
   filterGames();
 }
 
@@ -180,11 +180,8 @@ function filterGames() {
   if (sortValue === "title") {
     // Alfabetisk sortering - localeCompare() håndterer danske bogstaver korrekt
     filteredGames.sort((a, b) => a.title.localeCompare(b.title));
-  } else if (sortValue === "year") {
-    // Sortér på år (nyeste først) - b - a giver descending order
-    filteredGames.sort((a, b) => b.year - a.year);
   }
-  
+
   // Vis de filtrerede spil på siden
   displayGames(filteredGames);
 }
