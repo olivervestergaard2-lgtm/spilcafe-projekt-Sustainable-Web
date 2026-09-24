@@ -4,7 +4,7 @@
 // Start app når DOM er loaded (hele HTML siden er færdig med at indlæse)
 document.addEventListener("DOMContentLoaded", initApp);
 
-/// Global variabel til alle spil - tilgængelig for alle funktioner
+// Global variabel til alle spil - tilgængelig for alle funktioner
 let allGames = [];
 
 // #1: Initialiser appen - sæt event listeners og hent data
@@ -58,7 +58,7 @@ function displayGame(game) {
   const gameHTML = /*html*/ `
     <article class="game-card" tabindex="0">
       <img src="${game.image}" 
-           alt="Poster of ${game.title}" 
+           alt="Spilæske til ${game.title}"
            class="game-poster" />
       <div class="game-info">
         <h3>${game.title} <span class="game-year">(${game.year})</span></h3>
@@ -116,7 +116,7 @@ function showGameModal(game) {
   // Find modal indhold container og byg HTML struktur dynamisk
   //tilføj indhold fra JSON 
   document.querySelector("#dialog-content").innerHTML = /*html*/ `
-    <img src="${game.image}" alt="Poster af ${game.title}" class="game-poster">
+    <img src="${game.image}" alt="Spilæske til ${game.title}" class="game-poster">
     <div class="dialog-details">
       <p class="game-genre">${game.genre}</p>
       <p class="game-description">${game.description}</p>
