@@ -17,7 +17,6 @@
   --background-card: #f6c9c9;
 
   /* Semantic */
-  --warning: #F9DB25;
   --error: #ea4335;
 
   /* Effects */
@@ -94,8 +93,7 @@ main {
 /* Input felter styling */
 #search-input,
 #genre-select,
-#sort-select
- {
+#sort-select {
   background: rgb(125, 20, 20);
   color: var(--primary-text);
   border: 1px solid rgba(172, 198, 201, 0.3);
@@ -169,7 +167,7 @@ footer p{
 /* (main er allerede defineret ovenfor - dublet fjernet) */
 
 /* =====================
-   MOVIE GRID & CARDS
+   GAME GRID & CARDS
    ===================== */
 #game-list {
   display: grid;
@@ -249,7 +247,7 @@ footer p{
 }
 
 /* =====================
-   MOVIE DIALOG
+   GAME DIALOG
    ===================== */
 dialog#game-dialog {
   font-family: "poppins";
@@ -273,7 +271,7 @@ dialog#game-dialog::backdrop {
   backdrop-filter: blur(8px);
 }
 
-/* luk siden knappen */
+/* Luk dialog-knap */
 #close-dialog {
   position: absolute;
   top: 1rem;
@@ -379,7 +377,7 @@ dialog#game-dialog::backdrop {
 }
 
 /* =====================
-   CLEAR FILTERS BUTTON
+   NULSTIL FILTRE-KNAP
    ===================== */
 #clear-filters {
   background: linear-gradient(135deg, var(--error) 0%, #c62828 100%);
