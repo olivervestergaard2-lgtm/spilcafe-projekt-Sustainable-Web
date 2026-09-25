@@ -317,7 +317,7 @@ footer p{
    GAME DIALOG
    ===================== */
 dialog#game-dialog {
-  font-family: "poppins";
+  font-family: inherit;
   font-size: medium;
   border: none;
   border-radius: var(--radius);
@@ -408,7 +408,7 @@ dialog#game-dialog::backdrop {
 #dialog-content h2 {
   font-size: clamp(1.5rem, 4vw, 2.25rem);
   font-weight: 700;
-  color: var(--text);
+  color: var(--primary-text);
   line-height: 1.2;
   margin: 0 0 1rem 0;
 }
@@ -437,7 +437,7 @@ dialog#game-dialog::backdrop {
   line-height: 1.7 !important;
   margin-top: 1rem !important;
   padding: 1rem;
-  background: var(--third-color);
+  background: var(--secondary-color);
   border-radius: var(--radius);
   border-left: 4px solid var(--primary-color);
   font-style: italic;
@@ -447,35 +447,31 @@ dialog#game-dialog::backdrop {
    NULSTIL FILTRE-KNAP
    ===================== */
 #clear-filters {
-  background: linear-gradient(135deg, var(--error) 0%, #c62828 100%);
-  color: white;
+  background: var(--primary-color);
+  color: var(--primary-text);
   border: none;
-  border-radius: calc(var(--radius) * 0.5);
-  padding: 0.875rem 1.5rem;
-  font-size: 0.95rem;
+  border-radius: 0.4rem;
+  padding: 0.75rem 1rem;
+  font: inherit;
   font-weight: 600;
-  transition: var(--transition);
   cursor: pointer;
   display: flex;
   align-items: center;
   gap: 0.5rem;
   white-space: nowrap;
-  box-shadow: var(--shadow);
 }
 
 #clear-filters:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
-  background: linear-gradient(135deg, #c62828 0%, #b71c1c 100%);
+  background: var(--secondary-color);
 }
 
 #clear-filters:active {
   transform: translateY(0);
 }
 
-#clear-filters:focus {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(234, 67, 53, 0.3);
+#clear-filters:focus-visible {
+  outline: 3px solid var(--secondary-color);
+  outline-offset: 2px;
 }
 
 .btn-icon {
@@ -488,11 +484,11 @@ dialog#game-dialog::backdrop {
 
 .no-results {
   text-align: center;
-  color: var(--primary-text);
+  color: var(--secondary-text);
   font-size: 1.2rem;
   margin: 2rem 0;
   padding: 2rem;
-  background: var(--third-color);
+  background: var(--background);
   border-radius: var(--radius);
 }
 
@@ -533,9 +529,7 @@ dialog#game-dialog::backdrop {
     max-width: 350px;
     margin: 0 auto;
   }
-  header h1 {
-    font-size: 1.75rem;
-  }
+
 }
 
 /* Focus styles for keyboard navigation */
@@ -543,21 +537,4 @@ dialog#game-dialog::backdrop {
 #close-dialog:focus-visible {
   outline: 3px solid var(--secondary-color);
   outline-offset: 2px;
-}
-
-/* =====================
-   DARK MODE ADJUSTMENTS
-   ===================== */
-@media (prefers-color-scheme: dark){
-  .game-year {
-    background: var(--primary-color);
-    color: var(--third-color);
-  }
-  #dialog-content .game-year {
-    background: var(--primary-color);
-    color: var(--third-color);
-  }
-  #close-dialog {
-    background: rgba(23, 23, 23, 0.9);
-  }
 }
