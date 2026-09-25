@@ -259,15 +259,15 @@ footer p{
 }
 
 .game-card {
-  background: var(--background);
+  background: var(--background-card);
+  color: var(--primary-text);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   overflow: hidden;
   transition: var(--transition);
   cursor: pointer;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: none;
 }
-
 .game-card:hover {
   transform: translateY(-8px) scale(1.02);
   box-shadow: var(--shadow-lg);
@@ -298,7 +298,7 @@ footer p{
 .game-info h3 {
   font-size: clamp(1.125rem, 2vw, 1.375rem);
   font-weight: 600;
-  color: var(--secondary-text);
+  color: var(--primary-text);
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -308,7 +308,7 @@ footer p{
 
 
 .game-genre {
-  color: var(--secondary-color);
+  color: var(--primary-text);
   font-size: 0.9rem;
   margin-bottom: 0.75rem;
 }
