@@ -3,27 +3,24 @@
    ===================== */
 
 :root {
-  /* Colors */
-  --primary-color: #BF171C;
-  --secondary-color: #000000;
-  --third-color: #f6c9c9;
+  /* Farver fra designboard */
+  --primary-color: #505c38;
+  --secondary-color: #492e2e;
+  --accent-color: #bf171c;
 
-  /* Text - colors */
-  --primary-text: white;
-  --secondary-text: black;
+  /* Tekst */
+  --primary-text: #fff6f1;
+  --secondary-text: #171717;
 
-  /* Backgrounds */
-  --background: #BF171C;
-  --background-card: #f6c9c9;
-
-  /* Semantic */
-  --error: #ea4335;
+  /* Baggrunde */
+  --background: #fff6f1;
+  --background-card: #505c38;
 
   /* Effects */
-  --shadow: 0 4px 6px -1px rgba(255, 0, 0, 0.255);
-  --shadow-lg: 0 10px 15px -3px rgb(0, 0, 0);
-  --radius: 1rem;
-  --transition: 250ms ease;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 8px 20px rgba(0, 0, 0, 0.16);
+  --radius: 0.75rem;
+  --transition: 200ms ease;
 }
 
 /* =====================
@@ -36,22 +33,21 @@
 }
 
 body {
-  font-family: "luckiest guy";
-  font-size: 2rem;
-  line-height: 1.6;
-  background: var(--third-color);
-  color: var(--text);
+  font-family: "Trebuchet MS", Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  background: var(--background);
+  color: var(--secondary-text);
   min-height: 100vh;
-  letter-spacing: 5px;
 }
 
 /* =====================
    LAYOUT (main container)
    ===================== */
 main {
-  max-width: min(1400px, 95vw);
+  max-width: 1400px;
   margin: 0 auto;
-  padding: clamp(5rem, 10vw, 8rem) 1rem 2rem;
+  padding: 7rem 1.25rem 2rem;
 }
 
 /* =====================
@@ -82,39 +78,35 @@ main {
 }
 
 .filter-group label {
-  font-family: "poppins";
-  font-size: large;
-  font-weight: 100;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
   color: var(--primary-text);
   display: block;
-  letter-spacing: 5px;
 }
 
 /* Input felter styling */
 #search-input,
 #genre-select,
 #sort-select {
-  background: rgb(125, 20, 20);
-  color: var(--primary-text);
-  border: 1px solid rgba(172, 198, 201, 0.3);
-  border-radius: calc(var(--radius) * 0.5);
+  background: #ffffff;
+  color: var(--secondary-text);
+  border: 1px solid #6b6b6b;
+  border-radius: 0.4rem;
   padding: 0.75rem 1rem;
-  font-size: 1rem;
-  transition: var(--transition);
+  font: inherit;
   width: 100%;
 }
 
-#search-input:focus,
-#genre-select:focus,
-#sort-select:focus {
-  outline: none;
-  border-color: var(--third-color);
-  box-shadow: 0 0 0 3px rgba(172, 198, 201, 0.2);
+#search-input:focus-visible,
+#genre-select:focus-visible,
+#sort-select:focus-visible {
+  outline: 3px solid var(--secondary-color);
+  outline-offset: 2px;
 }
 
 #search-input::placeholder {
-  color: var(--primary-text);
-  opacity: 0.6;
+  color: #6b6b6b;
 }
 
 #genre-select,
@@ -132,24 +124,100 @@ main {
    ===================== */
 header {
   background: var(--primary-color);
-  backdrop-filter: blur(20px) saturate(180%);
-  border-bottom: 1px solid rgba(172, 198, 201, 0.2);
-  color: var(--primary-text);
-  padding: 1rem 0;
-  text-align: center;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1000;
-  transition: var(--transition);
 }
 
-header h1 {
-  font-size: clamp(1.5rem, 4vw, 2.5rem);
-  font-weight: 500;
-  letter-spacing: 5px;
+.header-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0.75rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
 }
+
+.logo {
+  color: var(--primary-text);
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.book-button {
+  background: var(--primary-text);
+  color: var(--secondary-text);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.book-button:focus-visible {
+  outline: 3px solid var(--accent-color);
+  outline-offset: 3px;
+}
+
+/* =====================
+   INTRO & OVERSKRIFTER
+   ===================== */
+
+.intro {
+  padding: 3rem 0 2rem;
+}
+
+.intro h1 {
+  max-width: 800px;
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1.15;
+  color: var(--secondary-text);
+  margin-bottom: 0.75rem;
+}
+
+.intro p {
+  max-width: 650px;
+  font-size: clamp(1rem, 2vw, 1.125rem);
+  color: #6b6b6b;
+}
+
+.games-section h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  line-height: 1.2;
+  color: var(--secondary-text);
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 600px) {
+  main {
+    padding-top: 6.5rem;
+  }
+
+  .header-content {
+    padding: 0.875rem 1rem;
+  }
+
+  .logo {
+    font-size: 1.25rem;
+  }
+
+  .book-button {
+    padding: 0.65rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .intro {
+    padding: 2rem 0 1.5rem;
+  }
+}
+
+/* =====================
+   FOOTER
+   ===================== */
 
 footer {
   background: var(--primary-color);
@@ -162,7 +230,6 @@ footer {
 footer p{
   font-size: small;
 }
-
 
 /* (main er allerede defineret ovenfor - dublet fjernet) */
 
