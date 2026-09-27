@@ -37,10 +37,12 @@
         <!-- Øverste række: Søg og genre -->
         <div class="filter-row-main">
           <div class="filter-group search-group">
-            <label for="search-input"> Søg</label>
-            <input type="text" id="search-input" placeholder="Søg efter et spil..." />
-          </div>
-
+            <label for="search-input">Søg efter spil</label>
+            <input
+             type="search"
+             id="search-input"
+             placeholder="Søg efter et spil..."
+/>
           <div class="filter-group">
             <label for="genre-select"> Kategori</label>
             <select id="genre-select">
@@ -59,9 +61,9 @@
         </div>
 
           <!-- Ryd alle filtre knap -->
-          <button id="clear-filters" class="clear-btn">
-            <span class="btn-icon">🗑️</span>
-            <span class="btn-text">Nulstil filtre</span>
+          <button id="clear-filters" class="clear-btn" type="button">
+          <span class="btn-icon" aria-hidden="true">🗑️</span>
+          <span class="btn-text">Nulstil filtre</span>
           </button>
       </section>
 
