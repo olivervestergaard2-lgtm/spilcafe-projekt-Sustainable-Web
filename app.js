@@ -85,7 +85,11 @@ gameButton.addEventListener("click", function (event) {
   event.stopPropagation();
   showGameModal(game);
 });
+
+// Lukker displayGame-funktionen
 }
+
+// ===== DROPDOWN OG MODAL FUNKTIONER =====
 
 // ===== DROPDOWN OG MODAL FUNKTIONER =====
 // #5: Udfyld genre-dropdown med alle unikke genrer fra data
