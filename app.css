@@ -53,24 +53,26 @@ main {
 /* =====================
    FILTERBAR (SØG/SORT/FILTER)
    ===================== */
+/* Filterområde */
 .filterbar {
-  background: var(--primary-color);
+  background-color: var(--primary-color);
   border-radius: var(--radius);
-  padding: 1.5rem;
+  padding: 2rem;
   margin-bottom: 2rem;
-  box-shadow: var(--shadow-lg);
-  border: 1px solid white;
+  box-shadow: var(--shadow);
+
+  display: flex;
+  align-items: flex-end;
+  gap: 1.5rem;
 }
 
-/* Filter rækker */
 .filter-row-main {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  gap: 1rem;
-  margin-bottom: 1rem;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 1.5rem;
+  flex: 1;
 }
 
-/* Filter grupper */
 .filter-group {
   display: flex;
   flex-direction: column;
@@ -78,45 +80,64 @@ main {
 }
 
 .filter-group label {
-  font-family: inherit;
-  font-size: 0.9rem;
-  font-weight: 600;
   color: var(--primary-text);
-  display: block;
+  font-weight: 600;
 }
 
-/* Input felter styling */
-#search-input,
-#genre-select,
-#sort-select {
-  background: #ffffff;
-  color: var(--secondary-text);
-  border: 1px solid #6b6b6b;
-  border-radius: 0.4rem;
-  padding: 0.75rem 1rem;
-  font: inherit;
+.filter-group input,
+.filter-group select {
   width: 100%;
+  min-height: 3.5rem;
+  padding: 0.8rem 1rem;
+  border: 2px solid transparent;
+  border-radius: 0.6rem;
+  background-color: var(--background);
+  color: var(--secondary-text);
+  font: inherit;
 }
 
-#search-input:focus-visible,
-#genre-select:focus-visible,
-#sort-select:focus-visible {
-  outline: 3px solid var(--secondary-color);
-  outline-offset: 2px;
+.filter-group input:focus-visible,
+.filter-group select:focus-visible {
+  outline: 3px solid var(--primary-text);
+  outline-offset: 3px;
 }
 
-#search-input::placeholder {
-  color: #6b6b6b;
-}
+/* Rød nulstil-knap */
+.clear-btn {
+  min-height: 3.5rem;
+  padding: 0.8rem 1.4rem;
 
-#genre-select,
-#sort-select {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+
+  background-color: var(--accent-color);
+  color: var(--primary-text);
+
+  border: none;
+  border-radius: 0.75rem;
+
+  font: inherit;
+  font-weight: 600;
+  white-space: nowrap;
   cursor: pointer;
+
+  transition: background-color 200ms ease, transform 200ms ease;
 }
 
-/* Search group særlig styling */
-.search-group {
-  grid-column: 1 / 2;
+.clear-btn:hover {
+  background-color: #991216;
+  transform: translateY(-2px);
+}
+
+.clear-btn:active {
+  transform: translateY(0);
+}
+
+.clear-btn:focus-visible {
+  outline: 3px solid var(--primary-text);
+  outline-offset: 3px;
 }
 
 /* =====================
@@ -531,13 +552,21 @@ dialog#game-dialog::backdrop {
 /* =====================
    RESPONSIVE FILTERBAR
    ===================== */
+   
 @media (max-width: 900px) {
+  .filterbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
   .filter-row-main {
     grid-template-columns: 1fr;
     gap: 1rem;
+    width: 100%;
   }
 
   #clear-filters {
+    width: 100%;
     justify-content: center;
   }
 }
@@ -545,11 +574,6 @@ dialog#game-dialog::backdrop {
 @media (max-width: 600px) {
   .filterbar {
     padding: 1rem;
-  }
-
-  #clear-filters {
-    padding: 1rem;
-    width: 100%;
   }
 }
 
