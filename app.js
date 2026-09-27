@@ -73,12 +73,18 @@ function displayGame(game) {
   gameList.insertAdjacentHTML("beforeend", gameHTML);
 
   const newCard = gameList.lastElementChild;
-  const gameButton = newCard.querySelector(".game-button");
+const gameButton = newCard.querySelector(".game-button");
 
-  gameButton.addEventListener("click", () => {
-    showGameModal(game);
-  });
-}
+// Åbn spillet ved klik på hele kortet
+newCard.addEventListener("click", function () {
+  showGameModal(game);
+});
+
+// Se spil-knappen åbner også spillet
+gameButton.addEventListener("click", function (event) {
+  event.stopPropagation();
+  showGameModal(game);
+});
 
 
 // ===== DROPDOWN OG MODAL FUNKTIONER =====
