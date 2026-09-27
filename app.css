@@ -148,6 +148,12 @@ header {
   text-decoration: none;
 }
 
+.logo img {
+  display: block;
+  width: auto;
+  height: 50px;
+}
+
 .book-button {
   background: var(--primary-text);
   color: var(--secondary-text);
@@ -196,6 +202,9 @@ header {
   main {
     padding-top: 6.5rem;
   }
+  .logo img {
+  height: 40px;
+}
 
   .header-content {
     padding: 0.875rem 1rem;
