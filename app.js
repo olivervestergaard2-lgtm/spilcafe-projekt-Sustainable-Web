@@ -50,7 +50,7 @@ function displayGames(games) {
   }
 }
 
-// #4: Opret et spilkort og tilføj event listeners
+// #4: Opret et spilkort og tilføj event listener
 function displayGame(game) {
   const gameList = document.querySelector("#game-list");
 
@@ -70,17 +70,16 @@ function displayGame(game) {
     </article>
   `;
 
-  // Tilføj game card til DOM (HTML) - insertAdjacentHTML sætter HTML ind uden at overskrive
   gameList.insertAdjacentHTML("beforeend", gameHTML);
 
-  // Find det kort vi lige har tilføjet (det sidste element)
-const newCard = gameList.lastElementChild;
+  const newCard = gameList.lastElementChild;
   const gameButton = newCard.querySelector(".game-button");
 
-  gameButton.addEventListener("click", function () {
+  gameButton.addEventListener("click", () => {
     showGameModal(game);
   });
 }
+
 
 // ===== DROPDOWN OG MODAL FUNKTIONER =====
 // #5: Udfyld genre-dropdown med alle unikke genrer fra data
