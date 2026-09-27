@@ -99,32 +99,6 @@ main {
   outline-offset: 3px;
 }
 
-/* Rød nulstil-knap */
-.clear-btn {
-  grid-column: 3;
-  justify-self: end;
-
-  background: transparent;
-  color: var(--primary-text);
-  border: none;
-  padding: 0;
-
-  font: inherit;
-  font-size: 0.9rem;
-  font-weight: 600;
-  text-decoration: underline;
-  cursor: pointer;
-}
-
-.clear-btn:hover {
-  text-decoration-thickness: 2px;
-}
-
-.clear-btn:focus-visible {
-  outline: 3px solid var(--primary-text);
-  outline-offset: 4px;
-}
-
 /* =====================
    HEADER & FOOTER
    ===================== */
@@ -523,10 +497,6 @@ dialog#game-dialog::backdrop {
     width: 100%;
   }
 
-  #clear-filters {
-    width: 100%;
-    justify-content: center;
-  }
 }
 
 @media (max-width: 600px) {

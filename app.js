@@ -7,19 +7,6 @@ document.addEventListener("DOMContentLoaded", initApp);
 // Global variabel til alle spil - tilgængelig for alle funktioner
 let allGames = [];
 
-// #1: Initialiser appen - sæt event listeners og hent data
-function initApp() {
-  getGames(); // Hent spildata fra JSON-fil
-
-  // Event listeners for alle filtre - kører filterGames når brugeren ændrer noget
-  document.querySelector("#search-input").addEventListener("input", filterGames);
-  document.querySelector("#genre-select").addEventListener("change", filterGames);
-  document.querySelector("#sort-select").addEventListener("change", filterGames);
-
-  // Event listener for clear-knappen - rydder alle filtre
-  document.querySelector("#clear-filters").addEventListener("click", clearAllFilters);
-}
-
 // #2: Hent spil fra JSON-fil
 async function getGames() {
   // Hent data fra URL - await venter på svar før vi går videre
