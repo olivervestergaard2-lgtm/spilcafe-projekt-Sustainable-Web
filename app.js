@@ -52,33 +52,34 @@ function displayGames(games) {
 
 // #4: Opret et spilkort og tilføj event listeners
 function displayGame(game) {
-  const gameList = document.querySelector("#game-list"); // Find container til spil
+  const gameList = document.querySelector("#game-list");
 
-  // Byg HTML struktur dynamisk - template literal med ${} til at indsætte data
- const gameHTML = /*html*/ `
-  <article class="game-card">
-    <img src="${game.image}"
-         alt="Spilæske til ${game.title}"
-         class="game-poster"
-         loading="lazy" />
-  <div class="game-info">
-  <h3>${game.title}</h3>
-  <p class="game-genre">${game.genre}</p>
-  <button class="game-button" type="button">Se spil</button>
-</div>
-  </article>
-`;
+  const gameHTML = /*html*/ `
+    <article class="game-card">
+      <img
+        src="${game.image}"
+        alt="Spilæske til ${game.title}"
+        class="game-poster"
+        loading="lazy"
+      />
+      <div class="game-info">
+        <h3>${game.title}</h3>
+        <p class="game-genre">${game.genre}</p>
+        <button class="game-button" type="button">Se spil</button>
+      </div>
+    </article>
+  `;
 
   // Tilføj game card til DOM (HTML) - insertAdjacentHTML sætter HTML ind uden at overskrive
   gameList.insertAdjacentHTML("beforeend", gameHTML);
 
   // Find det kort vi lige har tilføjet (det sidste element)
 const newCard = gameList.lastElementChild;
-const gameButton = newCard.querySelector(".game-button");
+  const gameButton = newCard.querySelector(".game-button");
 
-gameButton.addEventListener("click", function () {
-  showGameModal(game);
-});
+  gameButton.addEventListener("click", function () {
+    showGameModal(game);
+  });
 }
 
 // ===== DROPDOWN OG MODAL FUNKTIONER =====
