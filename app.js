@@ -94,24 +94,29 @@ gameButton.addEventListener("click", function (event) {
 // ===== DROPDOWN OG MODAL FUNKTIONER =====
 // #5: Udfyld genre-dropdown med alle unikke genrer fra data
 function populateGenreDropdown() {
-  const genreSelect = document.querySelector("#genre-select"); // Find genre dropdown
-  const genres = new Set(); // Set fjerner automatisk dubletter
+  const genreSelect = document.querySelector("#genre-select");
 
-  // Samle alle unikke genrer fra alle spil
-  // Hvert spil kan have flere genrer (array), så vi løber gennem dem alle
-  for (const game of allGames) {
-    for (const genre of game.genre) {
-      genres.add(genre); // Set sikrer kun unikke værdier
-    }
-  }
+  const genres = [
+    "Familie",
+    "Strategi",
+    "Party",
+    "Kortspil",
+    "Ordspil",
+    "Mysterie",
+    "Kooperativt",
+    "Fliselægning",
+    "Terning",
+    "Brætspil",
+    "Abstract"
+  ];
 
-  // Fjern gamle options undtagen 'Alle genrer' (reset dropdown)
-  genreSelect.innerHTML = /*html*/ `<option value="all">Alle genrer</option>`;
+  genreSelect.innerHTML = `<option value="all">Alle genrer</option>`;
 
-  // Sortér genres alfabetisk og tilføj dem som options
-  const sortedGenres = [...genres].sort(); // Konvertér Set til Array og sortér genrer
-  for (const genre of sortedGenres) {
-    genreSelect.insertAdjacentHTML("beforeend", /*html*/ `<option value="${genre}">${genre}</option>`);
+  for (const genre of genres) {
+    genreSelect.insertAdjacentHTML(
+      "beforeend",
+      `<option value="${genre}">${genre}</option>`
+    );
   }
 }
 
