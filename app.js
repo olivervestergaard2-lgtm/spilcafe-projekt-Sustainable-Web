@@ -198,10 +198,17 @@ function filterGames() {
   }
 
   // SORTERING (altid til sidst efter alle filtre er anvendt)
-  if (sortValue === "title") {
-    // Alfabetisk sortering - localeCompare() håndterer danske bogstaver korrekt
-    filteredGames.sort((a, b) => a.title.localeCompare(b.title));
-  }
+if (sortValue === "title-asc") {
+  filteredGames.sort((a, b) =>
+    a.title.localeCompare(b.title, "da", { sensitivity: "base" })
+  );
+}
+
+if (sortValue === "title-desc") {
+  filteredGames.sort((a, b) =>
+    b.title.localeCompare(a.title, "da", { sensitivity: "base" })
+  );
+} 
   // Vis de filtrerede spil på siden
   displayGames(filteredGames);
 }
