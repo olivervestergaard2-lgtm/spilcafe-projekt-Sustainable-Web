@@ -32,44 +32,46 @@
   <section class="games-section">
     <h2>Spiloversigt</h2>
 
-    <!-- Filter bar med alle filtreringsmuligheder -->
-      <section class="filterbar">
-        <!-- Øverste række: Søg og genre -->
-        <div class="filter-row-main">
-          <div class="filter-group search-group">
-            <label for="search-input">Søg efter spil</label>
-            <input
-             type="search"
-             id="search-input"
-             placeholder="Søg efter et spil..."
-/>
-          <div class="filter-group">
-            <label for="genre-select"> Kategori</label>
-            <select id="genre-select">
-              <option value="all">Alle genrer</option>
-              <!-- Kategorier indsættes dynamisk via JavaScript -->
-            </select>
-          </div>
+    <!-- Filterbar -->
+<section class="filterbar">
+  <div class="filter-row-main">
 
-          <div class="filter-group">
-            <label for="sort-select"> Sortering</label>
-            <select id="sort-select">
-            <option value="none">Ingen sortering</option>
-            <option value="title-asc">Titel (A–Å)</option>
-            <option value="title-desc">Titel (Å–A)</option>
-            </select>
-          </div>
-        </div>
+    <!-- Søg -->
+    <div class="filter-group search-group">
+      <label for="search-input">Søg efter spil</label>
+      <input
+        type="search"
+        id="search-input"
+        placeholder="Søg efter et spil..."
+      />
+    </div>
 
-          <!-- Ryd alle filtre knap -->
-          <div class="filter-group">
-  <label for="sort-select">Sortering</label>
-  <select id="sort-select">
-    <option value="none">Ingen sortering</option>
-    <option value="title-asc">Titel (A–Å)</option>
-    <option value="title-desc">Titel (Å–A)</option>
-  </select>
-</div>
+    <!-- Kategori -->
+    <div class="filter-group">
+      <label for="genre-select">Kategori</label>
+      <select id="genre-select">
+        <option value="all">Alle genrer</option>
+        <!-- Kategorier indsættes dynamisk via JavaScript -->
+      </select>
+    </div>
+
+    <!-- Sortering -->
+    <div class="filter-group">
+      <label for="sort-select">Sortering</label>
+      <select id="sort-select">
+        <option value="none">Ingen sortering</option>
+        <option value="title-asc">Titel (A–Å)</option>
+        <option value="title-desc">Titel (Å–A)</option>
+      </select>
+    </div>
+
+  </div>
+</section>
+
+<!-- Spil indsættes dynamisk her -->
+<section id="game-list" class="game-grid"></section>
+
+</section>
 
 </main>
 
