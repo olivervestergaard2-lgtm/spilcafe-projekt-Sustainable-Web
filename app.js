@@ -185,7 +185,6 @@ function filterGames() {
     // Alfabetisk sortering - localeCompare() håndterer danske bogstaver korrekt
     filteredGames.sort((a, b) => a.title.localeCompare(b.title));
   }
-
   // Vis de filtrerede spil på siden
   displayGames(filteredGames);
 }
