@@ -68,9 +68,10 @@ main {
 
 .filter-row-main {
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr;
+  grid-template-columns: 1.4fr 1fr 1fr;
   gap: 1.5rem;
   flex: 1;
+  align-items: end;
 }
 
 .filter-group {
@@ -526,7 +527,7 @@ dialog#game-dialog::backdrop {
    RESPONSIVE FILTERBAR
    ===================== */
    
-@media (max-width: 900px) {
+@media (max-width: 700px) {
   .filterbar {
     flex-direction: column;
     align-items: stretch;
