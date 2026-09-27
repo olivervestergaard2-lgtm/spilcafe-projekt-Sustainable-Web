@@ -322,25 +322,22 @@ footer p{
   margin-bottom: 0.75rem;
 }
 
-/* CTA-knap på spilkort */
+/* Se spil CTA */
 .game-button {
-  background: var(--primary-text);
-  color: var(--secondary-color);
-  border: 2px solid var(--primary-text);
-  border-radius: 0.5rem;
-  padding: 0.65rem 1rem;
+  background-color: var(--secondary-color);
+  color: var(--primary-text);
+  border: none;
+  border-radius: 0.75rem;
+  padding: 0.7rem 1.2rem;
   font: inherit;
   font-weight: 600;
   cursor: pointer;
-  margin-top: 0.5rem;
-  transition: transform 200ms ease, background-color 200ms ease, color 200ms ease;
+  transition: background-color 200ms ease, transform 200ms ease;
 }
 
 .game-button:hover {
-  background: var(--secondary-color);
-  color: var(--primary-text);
-  border-color: var(--secondary-color);
-  transform: translateY(-3px);
+  background-color: #352121;
+  transform: translateY(-2px);
 }
 
 .game-button:active {
