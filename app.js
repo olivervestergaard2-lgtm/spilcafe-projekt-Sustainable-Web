@@ -131,7 +131,6 @@ function showGameModal(game) {
       <p class="game-difficulty">${game.difficulty}</p>
       <p class="game-location">${game.location}</p>
       <p class="game-shelf">${game.shelf}</p>
-      <p class="game-available">${game.available}</p>
       <p class="rules">${game.rules}</p>
     </div>
   `;
