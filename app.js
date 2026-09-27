@@ -55,37 +55,32 @@ function displayGame(game) {
   const gameList = document.querySelector("#game-list"); // Find container til spil
 
   // Byg HTML struktur dynamisk - template literal med ${} til at indsætte data
-  const gameHTML = /*html*/ `
-    <article class="game-card" tabindex="0">
-      <img src="${game.image}" 
-           alt="Spilæske til ${game.title}"
-           class="game-poster" />
-      <div class="game-info">
-        <h3>${game.title}</h3>
-        <p class="game-genre">${game.genre}</p>
-      </div>
-    </article>
-  `;
+ const gameHTML = /*html*/ `
+  <article class="game-card">
+    <img src="${game.image}"
+         alt="Spilæske til ${game.title}"
+         class="game-poster"
+         loading="lazy" />
+    <div class="game-info">
+      <h3>${game.title}</h3>
+      <p class="game-genre">${game.genre}</p>
+      <button class="game-button" type="button">
+        Se spil
+      </button>
+    </div>
+  </article>
+`;
 
   // Tilføj game card til DOM (HTML) - insertAdjacentHTML sætter HTML ind uden at overskrive
   gameList.insertAdjacentHTML("beforeend", gameHTML);
 
   // Find det kort vi lige har tilføjet (det sidste element)
   const newCard = gameList.lastElementChild;
+const gameButton = newCard.querySelector(".game-button");
 
-  // Tilføj click event til kortet - når brugeren klikker på kortet
-  newCard.addEventListener("click", function () {
-   showGameModal(game); // Vis modal med spil detaljer
-  });
-
-  // Tilføj keyboard support (Enter og mellemrum) for tilgængelighed
-  newCard.addEventListener("keydown", function (event) {
-    if (event.key === "Enter" || event.key === " ") {
-      event.preventDefault(); // Forhindre scroll ved mellemrum
-      showGameModal(game); // Vis modal med spil detaljer
-    }
-  });
-}
+gameButton.addEventListener("click", function () {
+  showGameModal(game);
+});
 
 // ===== DROPDOWN OG MODAL FUNKTIONER =====
 // #5: Udfyld genre-dropdown med alle unikke genrer fra data
