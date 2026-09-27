@@ -322,7 +322,7 @@ footer p{
   margin-bottom: 0.75rem;
 }
 
-/* Se spil-knap */
+/* CTA-knap på spilkort */
 .game-button {
   background: var(--primary-text);
   color: var(--secondary-color);
@@ -333,13 +333,18 @@ footer p{
   font-weight: 600;
   cursor: pointer;
   margin-top: 0.5rem;
-  transition: var(--transition);
+  transition: transform 200ms ease, background-color 200ms ease, color 200ms ease;
 }
 
 .game-button:hover {
   background: var(--secondary-color);
   color: var(--primary-text);
   border-color: var(--secondary-color);
+  transform: translateY(-3px);
+}
+
+.game-button:active {
+  transform: translateY(0);
 }
 
 .game-button:focus-visible {
