@@ -416,7 +416,7 @@ dialog#game-dialog::backdrop {
 }
 
 #close-dialog:hover {
-  background: var(--error);
+  background: var(--accent-color);
   color: white;
   transform: scale(1.1);
 }
@@ -494,7 +494,7 @@ dialog#game-dialog::backdrop {
   line-height: 1.7 !important;
   margin-top: 1rem !important;
   padding: 1rem;
-  background: var(--secondary-color);
+  background: var(--accent-color);
   border-radius: var(--radius);
   border-left: 4px solid var(--primary-color);
   font-style: italic;
@@ -503,33 +503,6 @@ dialog#game-dialog::backdrop {
 /* =====================
    NULSTIL FILTRE-KNAP
    ===================== */
-#clear-filters {
-  background: var(--primary-color);
-  color: var(--primary-text);
-  border: none;
-  border-radius: 0.4rem;
-  padding: 0.75rem 1rem;
-  font: inherit;
-  font-weight: 600;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  white-space: nowrap;
-}
-
-#clear-filters:hover {
-  background: var(--secondary-color);
-}
-
-#clear-filters:active {
-  transform: translateY(0);
-}
-
-#clear-filters:focus-visible {
-  outline: 3px solid var(--secondary-color);
-  outline-offset: 2px;
-}
 
 .btn-icon {
   font-size: 1.1rem;
