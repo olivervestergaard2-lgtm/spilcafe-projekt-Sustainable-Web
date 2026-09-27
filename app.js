@@ -61,7 +61,7 @@ function displayGame(game) {
            alt="Spilæske til ${game.title}"
            class="game-poster" />
       <div class="game-info">
-        <h3>${game.title} <span class="game-year">(${game.year})</span></h3>
+        <h3>${game.title}</h3>
         <p class="game-genre">${game.genre}</p>
       </div>
     </article>
