@@ -120,20 +120,38 @@ function showGameModal(game) {
   // Find modal indhold container og byg HTML struktur dynamisk
   //tilføj indhold fra JSON 
   document.querySelector("#dialog-content").innerHTML = /*html*/ `
-    <img src="${game.image}" alt="Spilæske til ${game.title}" class="game-poster">
-    <div class="dialog-details">
-      <p class="game-genre">${game.genre}</p>
-      <p class="game-description">${game.description}</p>
-      <p class="game-playtime">${game.playtime}</p>
-      <p class="game-players">${game.players}</p>
-      <p class="game-language">${game.language}</p>
-      <p class="game-age">${game.age}</p>
-      <p class="game-difficulty">${game.difficulty}</p>
-      <p class="game-location">${game.location}</p>
-      <p class="game-shelf">${game.shelf}</p>
-      <p class="rules">${game.rules}</p>
+  <img
+    src="${game.image}"
+    alt="Spilæske til ${game.title}"
+    class="game-poster"
+  >
+
+  <div class="dialog-details">
+    <h2>${game.title}</h2>
+
+    <p><strong>Kategori:</strong> ${game.genre}</p>
+
+    <p><strong>Spilletid:</strong> ${game.playtime} min.</p>
+
+    <p><strong>Alder:</strong> Fra ${game.age} år</p>
+
+    <p><strong>Sværhedsgrad:</strong> ${game.difficulty}</p>
+
+    <p><strong>Lokation:</strong> ${game.location}</p>
+
+    <p><strong>Reol:</strong> ${game.shelf}</p>
+
+    <div class="game-description">
+      <strong>Om spillet</strong>
+      <p>${game.description}</p>
     </div>
-  `;
+
+    <div class="game-rules">
+      <strong>Spilleregler</strong>
+      <p>${game.rules}</p>
+    </div>
+  </div>
+`;
 
   // Åbn modalen - showModal() er en built-in browser funktion
   document.querySelector("#game-dialog").showModal();
