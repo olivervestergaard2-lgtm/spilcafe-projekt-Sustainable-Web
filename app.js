@@ -61,13 +61,11 @@ function displayGame(game) {
          alt="Spilæske til ${game.title}"
          class="game-poster"
          loading="lazy" />
-    <div class="game-info">
-      <h3>${game.title}</h3>
-      <p class="game-genre">${game.genre}</p>
-      <button class="game-button" type="button">
-        Se spil
-      </button>
-    </div>
+  <div class="game-info">
+  <h3>${game.title}</h3>
+  <p class="game-genre">${game.genre}</p>
+  <button class="game-button" type="button">Se spil</button>
+</div>
   </article>
 `;
 
@@ -75,12 +73,13 @@ function displayGame(game) {
   gameList.insertAdjacentHTML("beforeend", gameHTML);
 
   // Find det kort vi lige har tilføjet (det sidste element)
-  const newCard = gameList.lastElementChild;
+const newCard = gameList.lastElementChild;
 const gameButton = newCard.querySelector(".game-button");
 
 gameButton.addEventListener("click", function () {
   showGameModal(game);
 });
+}
 
 // ===== DROPDOWN OG MODAL FUNKTIONER =====
 // #5: Udfyld genre-dropdown med alle unikke genrer fra data
