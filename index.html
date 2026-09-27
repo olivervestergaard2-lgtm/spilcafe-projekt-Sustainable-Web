@@ -62,10 +62,18 @@
         </div>
 
           <!-- Ryd alle filtre knap -->
-          <button id="clear-filters" class="clear-btn" type="button">
-          <span class="btn-icon" aria-hidden="true">🗑️</span>
-          <span class="btn-text">Nulstil filtre</span>
-          </button>
+          <div class="filter-group">
+  <label for="sort-select">Sortering</label>
+  <select id="sort-select">
+    <option value="none">Ingen sortering</option>
+    <option value="title-asc">Titel (A–Å)</option>
+    <option value="title-desc">Titel (Å–A)</option>
+  </select>
+</div>
+
+<button id="clear-filters" class="clear-btn" type="button">
+  Nulstil filtre
+</button>
       </section>
 
       <!-- spil grid -->
