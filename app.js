@@ -72,15 +72,15 @@ function displayGame(game) {
 
   gameList.insertAdjacentHTML("beforeend", gameHTML);
 
-  const newCard = gameList.lastElementChild;
+const newCard = gameList.lastElementChild;
 const gameButton = newCard.querySelector(".game-button");
 
-// Åbn spillet ved klik på hele kortet
+// Hele kortet kan klikkes
 newCard.addEventListener("click", function () {
   showGameModal(game);
 });
 
-// Se spil-knappen åbner også spillet
+// CTA-knappen kan også klikkes
 gameButton.addEventListener("click", function (event) {
   event.stopPropagation();
   showGameModal(game);
