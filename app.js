@@ -7,15 +7,37 @@ document.addEventListener("DOMContentLoaded", initApp);
 // Global variabel til alle spil - tilgængelig for alle funktioner
 let allGames = [];
 
+// #1: Initialiser app og tilføj event listeners
+function initApp() {
+  getGames();
+
+  // Søg efter spil mens brugeren skriver
+  document
+    .querySelector("#search-input")
+    .addEventListener("input", filterGames);
+
+  // Filtrer når brugeren vælger en genre
+  document
+    .querySelector("#genre-select")
+    .addEventListener("change", filterGames);
+
+  // Sorter når brugeren vælger sortering
+  document
+    .querySelector("#sort-select")
+    .addEventListener("change", filterGames);
+}
+
 // #2: Hent spil fra JSON-fil
 async function getGames() {
   // Hent data fra URL - await venter på svar før vi går videre
-  const response = await fetch("https://raw.githubusercontent.com/cederdorff/race/refs/heads/master/data/games.json");
+  const response = await fetch(
+    "https://raw.githubusercontent.com/cederdorff/race/refs/heads/master/data/games.json"
+  );
 
   // Pars JSON til JS array og gem i global variabel, der er tilgængelig for alle funktioner
   allGames = await response.json();
 
-  populateGenreDropdown(); // Udfyld dropdown med genrer fra data
+  populateGenreDropdown(); // Udfyld dropdown med genrer
   displayGames(allGames); // Vis alle games ved start
 }
 
@@ -27,7 +49,8 @@ function displayGames(games) {
 
   // Hvis ingen spil matcher filtrene, vis en besked til brugeren
   if (games.length === 0) {
-    gameList.innerHTML = '<p class="no-results">Ingen spil matchede dine filtre 😢</p>';
+    gameList.innerHTML =
+      '<p class="no-results">Ingen spil matchede dine filtre</p>';
     return; // Stop funktionen her - return betyder "stop her og gå ikke videre"
   }
 
@@ -49,37 +72,42 @@ function displayGame(game) {
         class="game-poster"
         loading="lazy"
       />
+
       <div class="game-info">
         <h3>${game.title}</h3>
         <p class="game-genre">${game.genre}</p>
-        <button class="game-button" type="button">Se spil</button>
+
+        <button
+          class="game-button"
+          type="button"
+          aria-label="Se ${game.title}"
+        >
+          Se spil
+        </button>
       </div>
     </article>
   `;
 
   gameList.insertAdjacentHTML("beforeend", gameHTML);
 
-const newCard = gameList.lastElementChild;
-const gameButton = newCard.querySelector(".game-button");
+  const newCard = gameList.lastElementChild;
+  const gameButton = newCard.querySelector(".game-button");
 
-// Hele kortet kan klikkes
-newCard.addEventListener("click", function () {
-  showGameModal(game);
-});
+  // Hele kortet kan klikkes
+  newCard.addEventListener("click", function () {
+    showGameModal(game);
+  });
 
-// CTA-knappen kan også klikkes
-gameButton.addEventListener("click", function (event) {
-  event.stopPropagation();
-  showGameModal(game);
-});
-
-// Lukker displayGame-funktionen
+  // CTA-knappen kan også klikkes
+  gameButton.addEventListener("click", function (event) {
+    event.stopPropagation();
+    showGameModal(game);
+  });
 }
 
 // ===== DROPDOWN OG MODAL FUNKTIONER =====
 
-// ===== DROPDOWN OG MODAL FUNKTIONER =====
-// #5: Udfyld genre-dropdown med alle unikke genrer fra data
+// #5: Udfyld genre-dropdown med relevante genrer
 function populateGenreDropdown() {
   const genreSelect = document.querySelector("#genre-select");
 
@@ -99,6 +127,7 @@ function populateGenreDropdown() {
 
   genreSelect.innerHTML = `<option value="all">Alle genrer</option>`;
 
+  // Tilføj hver genre til dropdown-menuen
   for (const genre of genres) {
     genreSelect.insertAdjacentHTML(
       "beforeend",
@@ -107,69 +136,67 @@ function populateGenreDropdown() {
   }
 }
 
-// #6: Vis spil i modal dialog - popup vindue med spil detaljer
+// #6: Vis spil i modal dialog - popup vindue med spildetaljer
 function showGameModal(game) {
   // Find modal indhold container og byg HTML struktur dynamisk
-  //tilføj indhold fra JSON 
+  // Tilføj indhold fra JSON
   document.querySelector("#dialog-content").innerHTML = /*html*/ `
-  <img
-    src="${game.image}"
-    alt="Spilæske til ${game.title}"
-    class="game-poster"
-  >
+    <img
+      src="${game.image}"
+      alt="Spilæske til ${game.title}"
+      class="game-poster"
+    />
 
-  <div class="dialog-details">
-    <h2>${game.title}</h2>
+    <div class="dialog-details">
+      <h2>${game.title}</h2>
 
-    <p><strong>Kategori:</strong> ${game.genre}</p>
+      <p><strong>Kategori:</strong> ${game.genre}</p>
 
-    <p><strong>Spilletid:</strong> ${game.playtime} min.</p>
+      <p><strong>Spilletid:</strong> ${game.playtime} min.</p>
 
-    <p><strong>Alder:</strong> Fra ${game.age} år</p>
+      <p>
+        <strong>Antal spillere:</strong>
+        ${game.players.min}-${game.players.max}
+      </p>
 
-    <p><strong>Sværhedsgrad:</strong> ${game.difficulty}</p>
+      <p><strong>Alder:</strong> Fra ${game.age} år</p>
 
-    <p><strong>Lokation:</strong> ${game.location}</p>
+      <p><strong>Sværhedsgrad:</strong> ${game.difficulty}</p>
 
-    <p><strong>Reol:</strong> ${game.shelf}</p>
+      <p><strong>Lokation:</strong> ${game.location}</p>
 
-    <div class="game-description">
-      <strong>Om spillet</strong>
-      <p>${game.description}</p>
+      <p><strong>Reol:</strong> ${game.shelf}</p>
+
+      <div class="game-description">
+        <strong>Om spillet</strong>
+        <p>${game.description}</p>
+      </div>
+
+      <div class="game-rules">
+        <strong>Spilleregler</strong>
+        <p>${game.rules}</p>
+      </div>
     </div>
-
-    <div class="game-rules">
-      <strong>Spilleregler</strong>
-      <p>${game.rules}</p>
-    </div>
-  </div>
-`;
+  `;
 
   // Åbn modalen - showModal() er en built-in browser funktion
   document.querySelector("#game-dialog").showModal();
 }
 
 // ===== FILTER FUNKTIONER =====
-// #7: Ryd alle filtre - reset alle filter felter til tomme værdier
-function clearAllFilters() {
-  // Ryd alle input felter - sæt value til tom string eller standard værdi
-  document.querySelector("#search-input").value = "";
-  document.querySelector("#genre-select").value = "all";
-  document.querySelector("#sort-select").value = "none";
 
-  // Kør filtrering igen og vis alle spil
-  filterGames();
-}
-
-// #8: Komplet filtrering med alle funktioner - den vigtigste funktion!
+// #7: Komplet filtrering med søgning, genre og sortering
 function filterGames() {
   // Hent alle filter værdier fra input felterne
-  const searchValue = document.querySelector("#search-input").value.toLowerCase(); // Konvertér til lowercase for case-insensitive søgning
+  const searchValue = document
+    .querySelector("#search-input")
+    .value.toLowerCase();
+
   const genreValue = document.querySelector("#genre-select").value;
   const sortValue = document.querySelector("#sort-select").value;
 
-  // Start med alle spil - kopiér til ny variabel så vi ikke ændrer originalen
-  let filteredGames = allGames;
+  // Start med en kopi af alle spil så original rækkefølge ikke ændres
+  let filteredGames = [...allGames];
 
   // FILTER 1: Søgetekst - filtrer på spil titel
   if (searchValue) {
@@ -189,18 +216,20 @@ function filterGames() {
     });
   }
 
-  // SORTERING (altid til sidst efter alle filtre er anvendt)
-if (sortValue === "title-asc") {
-  filteredGames.sort((a, b) =>
-    a.title.localeCompare(b.title, "da", { sensitivity: "base" })
-  );
-}
+  // SORTERING: Titel fra A-Å
+  if (sortValue === "title-asc") {
+    filteredGames.sort((a, b) =>
+      a.title.localeCompare(b.title, "da", { sensitivity: "base" })
+    );
+  }
 
-if (sortValue === "title-desc") {
-  filteredGames.sort((a, b) =>
-    b.title.localeCompare(a.title, "da", { sensitivity: "base" })
-  );
-} 
+  // SORTERING: Titel fra Å-A
+  if (sortValue === "title-desc") {
+    filteredGames.sort((a, b) =>
+      b.title.localeCompare(a.title, "da", { sensitivity: "base" })
+    );
+  }
+
   // Vis de filtrerede spil på siden
   displayGames(filteredGames);
 }
