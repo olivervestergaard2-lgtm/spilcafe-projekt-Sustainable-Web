@@ -104,19 +104,19 @@ main {
 
 /* Rød nulstil-knap */
 .clear-btn {
+  background-color: var(--accent-color);
+  color: var(--primary-text);
+  border: none;
+  border-radius: 0.75rem;
+
+  padding: 0.75rem 1.25rem;
   min-height: 3.5rem;
-  padding: 0.8rem 1.4rem;
 
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.6rem;
-
-  background-color: var(--accent-color);
-  color: var(--primary-text);
-
-  border: none;
-  border-radius: 0.75rem;
+  align-self: flex-end;
+  gap: 0.5rem;
 
   font: inherit;
   font-weight: 600;
