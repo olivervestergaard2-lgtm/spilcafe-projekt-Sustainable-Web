@@ -343,9 +343,14 @@ dialog#game-dialog {
   max-height: 90vh;
   background: var(--primary-color);
   color: var(--primary-text);
-  overflow: hidden;
+  overflow-y: auto;
   position: relative;
   margin: auto;
+}
+
+/* Lås siden bag dialogen, når et spil er åbent */
+body:has(#game-dialog[open]) {
+  overflow: hidden;
 }
 
 /* slørret baggrund når man klikker på et kort */
@@ -389,6 +394,8 @@ dialog#game-dialog::backdrop {
   overflow-y: auto;
   max-height: 90vh;
 }
+
+
 
 @media (max-width: 768px) {
   #dialog-content {
