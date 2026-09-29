@@ -3,144 +3,162 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Spil oversigt</title>
+
+    <title>Spiloversigt | Spilcafé</title>
+
     <link rel="stylesheet" href="app.css" />
     <link rel="icon" href="images/favicon.ico" />
-    <!--luckiest guy og poppins font-->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet">
   </head>
 
-<body>
- <header>
-  <div class="header-content">
-    <a href="#" class="logo" aria-label="Spilcafé - gå til toppen">
-      <img src="images/spilcafe.logo.webp" alt="Spilcafé" />
-    </a>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="header-content">
+        <a href="#" class="logo" aria-label="Spilcafé - gå til toppen">
+          <img src="images/spilcafe.logo.webp" alt="Spilcafé" />
+        </a>
 
-    <section class="booking" id="booking">
-  <div class="booking-content">
-    <h2>Book et bord</h2>
-    <p>
-      Klar til en hyggelig stund? Vælg dato, tidspunkt og antal personer.
-    </p>
-
-    <form class="booking-form">
-      <div class="booking-field">
-        <label for="booking-name">Navn</label>
-        <input
-          type="text"
-          id="booking-name"
-          name="name"
-          autocomplete="name"
-          required
-        />
+        <button type="button" class="book-button" id="open-booking">
+          Book bord
+        </button>
       </div>
+    </header>
 
-      <div class="booking-field">
-        <label for="booking-date">Dato</label>
-        <input
-          type="date"
-          id="booking-date"
-          name="date"
-          required
-        />
-      </div>
+    <main>
+      <!-- Intro -->
+      <section class="intro">
+        <h1>Find et spil. Hyg dig.</h1>
 
-      <div class="booking-field">
-        <label for="booking-time">Tidspunkt</label>
-        <input
-          type="time"
-          id="booking-time"
-          name="time"
-          required
-        />
-      </div>
+        <p>
+          Find et brætspil, der passer til jer, og gør jer klar til en hyggelig
+          stund i Spilcaféen.
+        </p>
+      </section>
 
-      <div class="booking-field">
-        <label for="booking-guests">Antal personer</label>
-        <input
-          type="number"
-          id="booking-guests"
-          name="guests"
-          min="1"
-          max="12"
-          required
-        />
-      </div>
+      <!-- Spiloversigt -->
+      <section class="games-section">
+        <h2>Spiloversigt</h2>
 
-      <button type="submit" class="booking-submit">
-        Book bord
-      </button>
-    </form>
-  </div>
-</section>
-</header>
+        <!-- Filterbar -->
+        <section class="filterbar">
+          <div class="filter-row-main">
 
-  <section class="intro">
-  <h1>Find et spil. Hyg dig.</h1>
-  <p>
-    Find et brætspil, der passer til jer, og gør jer klar til en hyggelig
-    stund i Spilcaféen.
-  </p>
-</section>
+            <!-- Søg -->
+            <div class="filter-group search-group">
+              <label for="search-input">Søg efter spil</label>
+              <input
+                type="search"
+                id="search-input"
+                placeholder="Søg efter et spil..."
+              />
+            </div>
 
-  <section class="games-section">
-    <h2>Spiloversigt</h2>
+            <!-- Kategori -->
+            <div class="filter-group">
+              <label for="genre-select">Kategori</label>
+              <select id="genre-select">
+                <option value="all">Alle kategorier</option>
+                <!-- Kategorier indsættes dynamisk via JavaScript -->
+              </select>
+            </div>
 
-    <!-- Filterbar -->
-<section class="filterbar">
-  <div class="filter-row-main">
+            <!-- Sortering -->
+            <div class="filter-group">
+              <label for="sort-select">Sortering</label>
+              <select id="sort-select">
+                <option value="none">Ingen sortering</option>
+                <option value="title-asc">Titel (A–Å)</option>
+                <option value="title-desc">Titel (Å–A)</option>
+              </select>
+            </div>
 
-    <!-- Søg -->
-    <div class="filter-group search-group">
-      <label for="search-input">Søg efter spil</label>
-      <input
-        type="search"
-        id="search-input"
-        placeholder="Søg efter et spil..."
-      />
-    </div>
+          </div>
+        </section>
 
-    <!-- Kategori -->
-    <div class="filter-group">
-      <label for="genre-select">Kategori</label>
-      <select id="genre-select">
-        <option value="all">Alle genrer</option>
-        <!-- Kategorier indsættes dynamisk via JavaScript -->
-      </select>
-    </div>
-
-    <!-- Sortering -->
-    <div class="filter-group">
-      <label for="sort-select">Sortering</label>
-      <select id="sort-select">
-        <option value="none">Ingen sortering</option>
-        <option value="title-asc">Titel (A–Å)</option>
-        <option value="title-desc">Titel (Å–A)</option>
-      </select>
-    </div>
-
-  </div>
-</section>
-
-<!-- Spil indsættes dynamisk her -->
-<section id="game-list" class="game-grid"></section>
-
-</section>
-
-</main>
+        <!-- Spil indsættes dynamisk her -->
+        <section id="game-list" class="game-grid"></section>
+      </section>
+    </main>
 
     <!-- Footer -->
     <footer>
       <p>© RACE - Rasmus Cederdorff</p>
     </footer>
 
+    <!-- Dialog til booking af bord -->
+    <dialog id="booking-dialog">
+      <div class="booking-dialog-content">
+
+        <button
+          type="button"
+          id="close-booking"
+          class="close-booking"
+          aria-label="Luk booking"
+        >
+          ✕
+        </button>
+
+        <h2>Book et bord</h2>
+
+        <p>Vælg dato, tidspunkt og antal personer.</p>
+
+        <form id="booking-form">
+          <div class="booking-field">
+            <label for="booking-name">Navn</label>
+            <input
+              type="text"
+              id="booking-name"
+              name="name"
+              autocomplete="name"
+              required
+            />
+          </div>
+
+          <div class="booking-field">
+            <label for="booking-date">Dato</label>
+            <input
+              type="date"
+              id="booking-date"
+              name="date"
+              required
+            />
+          </div>
+
+          <div class="booking-field">
+            <label for="booking-time">Tidspunkt</label>
+            <input
+              type="time"
+              id="booking-time"
+              name="time"
+              required
+            />
+          </div>
+
+          <div class="booking-field">
+            <label for="booking-guests">Antal personer</label>
+            <input
+              type="number"
+              id="booking-guests"
+              name="guests"
+              min="1"
+              max="12"
+              required
+            />
+          </div>
+
+          <button type="submit" class="booking-submit">
+            Book bord
+          </button>
+        </form>
+
+      </div>
+    </dialog>
+
     <!-- Dialog med spildetaljer -->
     <dialog id="game-dialog">
       <form method="dialog">
         <button id="close-dialog" aria-label="Luk">✕</button>
+
         <div id="dialog-content">
           <!-- Spildetaljer indsættes dynamisk via JavaScript -->
         </div>
