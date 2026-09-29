@@ -96,7 +96,8 @@ function displayGame(game, index) {
         src="${game.image}"
         alt="Spilæske til ${game.title}"
         class="game-poster"
-        loading="lazy"
+        loading="${index === 0 ? "eager" : "lazy"}"
+        fetchpriority="${index === 0 ? "high" : "auto"}"
       />
 
       <div class="game-info">
