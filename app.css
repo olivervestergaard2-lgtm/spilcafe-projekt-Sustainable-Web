@@ -49,6 +49,10 @@ main {
   margin: 0 auto;
   padding: 7rem 1.25rem 2rem;
 }
+/* Giver plads under den faste header */
+main {
+  padding-top: 6rem;
+}
 
 /* =====================
    FILTERBAR (SØG/SORT/FILTER)
