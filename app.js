@@ -11,6 +11,15 @@ let allGames = [];
 function initApp() {
   getGames();
 
+// Åbn og luk booking-dialog
+document
+  .querySelector("#open-booking")
+  .addEventListener("click", openBookingDialog);
+
+document
+  .querySelector("#close-booking")
+  .addEventListener("click", closeBookingDialog);
+
   // Søg efter spil mens brugeren skriver
   document
     .querySelector("#search-input")
@@ -181,6 +190,17 @@ function showGameModal(game) {
 
   // Åbn modalen - showModal() er en built-in browser funktion
   document.querySelector("#game-dialog").showModal();
+}
+// ===== BOOKING =====
+
+// Åbn booking-dialog
+function openBookingDialog() {
+  document.querySelector("#booking-dialog").showModal();
+}
+
+// Luk booking-dialog
+function closeBookingDialog() {
+  document.querySelector("#booking-dialog").close();
 }
 
 // ===== FILTER FUNKTIONER =====
