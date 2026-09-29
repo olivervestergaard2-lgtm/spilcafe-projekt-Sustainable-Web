@@ -19,8 +19,63 @@
       <img src="images/spilcafe.logo.webp" alt="Spilcafé" />
     </a>
 
-    <a href="#booking" class="book-button">Book bord</a>
+    <section class="booking" id="booking">
+  <div class="booking-content">
+    <h2>Book et bord</h2>
+    <p>
+      Klar til en hyggelig stund? Vælg dato, tidspunkt og antal personer.
+    </p>
+
+    <form class="booking-form">
+      <div class="booking-field">
+        <label for="booking-name">Navn</label>
+        <input
+          type="text"
+          id="booking-name"
+          name="name"
+          autocomplete="name"
+          required
+        />
+      </div>
+
+      <div class="booking-field">
+        <label for="booking-date">Dato</label>
+        <input
+          type="date"
+          id="booking-date"
+          name="date"
+          required
+        />
+      </div>
+
+      <div class="booking-field">
+        <label for="booking-time">Tidspunkt</label>
+        <input
+          type="time"
+          id="booking-time"
+          name="time"
+          required
+        />
+      </div>
+
+      <div class="booking-field">
+        <label for="booking-guests">Antal personer</label>
+        <input
+          type="number"
+          id="booking-guests"
+          name="guests"
+          min="1"
+          max="12"
+          required
+        />
+      </div>
+
+      <button type="submit" class="booking-submit">
+        Book bord
+      </button>
+    </form>
   </div>
+</section>
 </header>
 
   <section class="intro">
