@@ -20,6 +20,11 @@ document
   .querySelector("#close-booking")
   .addEventListener("click", closeBookingDialog);
 
+    // Åbn booking-dialog fra footeren
+  document
+    .querySelector("#footer-booking")
+    .addEventListener("click", openBookingDialog);
+    
   // Søg efter spil mens brugeren skriver
   document
     .querySelector("#search-input")
