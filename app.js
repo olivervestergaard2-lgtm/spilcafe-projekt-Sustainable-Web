@@ -7,30 +7,35 @@ document.addEventListener("DOMContentLoaded", initApp);
 // Global variabel til alle spil - tilgængelig for alle funktioner
 let allGames = [];
 
-// #1: Initialiser app og tilføj event listeners
 function initApp() {
   getGames();
 
-// Åbn og luk booking-dialog
-document
-  .querySelector("#open-booking")
-  .addEventListener("click", openBookingDialog);
+  // Åbn booking-dialog fra header
+  document
+    .querySelector("#open-booking")
+    .addEventListener("click", openBookingDialog);
 
-document
-  .querySelector("#close-booking")
-  .addEventListener("click", closeBookingDialog);
+  // Luk booking-dialog
+  document
+    .querySelector("#close-booking")
+    .addEventListener("click", closeBookingDialog);
 
-    // Åbn booking-dialog fra footeren
+  // Åbn booking-dialog fra footer
   document
     .querySelector("#footer-booking")
     .addEventListener("click", openBookingDialog);
-    
+
+  // Undgå at prototype-formularen sender data
+  document
+    .querySelector("#booking-form")
+    .addEventListener("submit", handleBookingSubmit);
+
   // Søg efter spil mens brugeren skriver
   document
     .querySelector("#search-input")
     .addEventListener("input", filterGames);
 
-  // Filtrer når brugeren vælger en genre
+  // Filtrer når brugeren vælger en kategori
   document
     .querySelector("#genre-select")
     .addEventListener("change", filterGames);
@@ -58,8 +63,15 @@ async function getGames() {
 // ===== VISNING AF SPIL =====
 // #3: Vis alle spil på siden
 function displayGames(games) {
-  const gameList = document.querySelector("#game-list"); // Find container til spil
-  gameList.innerHTML = ""; // Ryd gammel liste (fjern alt HTML indhold)
+  const gameList = document.querySelector("#game-list");
+  const resultsStatus = document.querySelector("#results-status");
+
+  gameList.innerHTML = "";
+
+  resultsStatus.textContent =
+    games.length === 1
+      ? "1 spil fundet"
+      : `${games.length} spil fundet`;
 
   // Hvis ingen spil matcher filtrene, vis en besked til brugeren
   if (games.length === 0) {
@@ -139,7 +151,7 @@ function populateGenreDropdown() {
     "Abstract"
   ];
 
-  genreSelect.innerHTML = `<option value="all">Alle genrer</option>`;
+  genreSelect.innerHTML = `<option value="all">Alle kategorier</option>`;
 
   // Tilføj hver genre til dropdown-menuen
   for (const genre of genres) {
@@ -162,7 +174,7 @@ function showGameModal(game) {
     />
 
     <div class="dialog-details">
-      <h2>${game.title}</h2>
+      <h2 id="game-dialog-heading">${game.title}</h2>
 
       <p><strong>Kategori:</strong> ${game.genre}</p>
 
@@ -206,6 +218,11 @@ function openBookingDialog() {
 // Luk booking-dialog
 function closeBookingDialog() {
   document.querySelector("#booking-dialog").close();
+}
+
+// Undgå at prototype-formularen sender data
+function handleBookingSubmit(event) {
+  event.preventDefault();
 }
 
 // ===== FILTER FUNKTIONER =====
