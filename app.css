@@ -193,7 +193,7 @@ header {
 .intro p {
   max-width: 650px;
   font-size: clamp(1rem, 2vw, 1.125rem);
-  color: #6b6b6b;
+  color: var(--secondary-text);
 }
 
 .games-section h2 {
