@@ -44,14 +44,11 @@ body {
 /* =====================
    LAYOUT (main container)
    ===================== */
+
 main {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 7rem 1.25rem 2rem;
-}
-/* Giver plads under den faste header */
-main {
-  padding-top: 6rem;
+  padding: 6rem 1.25rem 2rem;
 }
 
 /* =====================
@@ -138,14 +135,26 @@ header {
   height: 50px;
 }
 
+.logo:focus-visible {
+  outline: 3px solid var(--primary-text);
+  outline-offset: 4px;
+  border-radius: 0.25rem;
+}
+
 .book-button {
   background: var(--primary-text);
   color: var(--secondary-text);
   padding: 0.5rem 1rem;
+  border: none;
   border-radius: 0.5rem;
+  font: inherit;
   font-size: 0.9rem;
   font-weight: 600;
-  text-decoration: none;
+  cursor: pointer;
+}
+
+.book-button:hover {
+  background-color: #f0e6e1;
 }
 
 .book-button:focus-visible {
@@ -295,11 +304,6 @@ header {
   border-color: var(--primary-color);
 }
 
-.game-card:focus {
-  outline: 3px solid var(--primary-color);
-  outline-offset: 2px;
-}
-
 .game-poster {
   width: 100%;
   height: 400px;
@@ -380,15 +384,9 @@ dialog#game-dialog {
   margin: auto;
 }
 
-/* Lås siden bag dialogen, når et spil er åbent */
-body:has(#game-dialog[open]) {
-  overflow: hidden;
-}
-
 /* slørret baggrund når man klikker på et kort */
 dialog#game-dialog::backdrop {
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.6);
 }
 
 /* Luk dialog-knap */
@@ -426,8 +424,6 @@ dialog#game-dialog::backdrop {
   overflow-y: auto;
   max-height: 90vh;
 }
-
-
 
 @media (max-width: 768px) {
   #dialog-content {
@@ -498,18 +494,6 @@ dialog#game-dialog::backdrop {
   font-style: italic;
 }
 
-/* =====================
-   NULSTIL FILTRE-KNAP
-   ===================== */
-
-.btn-icon {
-  font-size: 1.1rem;
-}
-
-.btn-text {
-  font-size: 0.95rem;
-}
-
 .no-results {
   text-align: center;
   color: var(--secondary-text);
@@ -523,7 +507,13 @@ dialog#game-dialog::backdrop {
 /* =====================
    RESPONSIVE FILTERBAR
    ===================== */
-   
+
+@media (max-width: 600px) {
+  .filterbar {
+    padding: 1rem;
+  }
+}
+
 @media (max-width: 700px) {
   .filterbar {
     flex-direction: column;
@@ -536,21 +526,14 @@ dialog#game-dialog::backdrop {
     width: 100%;
   }
 
-}
-
-@media (max-width: 600px) {
-  .filterbar {
-    padding: 1rem;
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
   }
-}
 
-.footer-content {
-  grid-template-columns: 1fr;
-  gap: 2rem;
-}
-
-.footer-action {
-  justify-self: start;
+  .footer-action {
+    justify-self: start;
+  }
 }
 
 /* =====================
@@ -569,10 +552,9 @@ dialog#game-dialog::backdrop {
 }
 
 /* Focus styles for keyboard navigation */
-.game-card:focus-visible,
 #close-dialog:focus-visible {
-  outline: 3px solid var(--secondary-color);
-  outline-offset: 2px;
+  outline: 3px solid var(--primary-text);
+  outline-offset: 3px;
 }
 
 /* =====================
