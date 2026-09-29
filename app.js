@@ -81,13 +81,13 @@ function displayGames(games) {
   }
 
   // Loop gennem alle spil og vis hver enkelt
-  for (const game of games) {
-    displayGame(game); // Kald displayGame for hvert spil
-  }
+ games.forEach((game, index) => {
+  displayGame(game, index);
+ });
 }
 
 // #4: Opret et spilkort og tilføj event listener
-function displayGame(game) {
+function displayGame(game, index) {
   const gameList = document.querySelector("#game-list");
 
   const gameHTML = /*html*/ `
