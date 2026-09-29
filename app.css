@@ -574,3 +574,161 @@ dialog#game-dialog::backdrop {
   outline: 3px solid var(--secondary-color);
   outline-offset: 2px;
 }
+
+/* =====================
+   BOOKING DIALOG
+   ===================== */
+
+#booking-dialog {
+  font-family: inherit;
+  border: none;
+  border-radius: var(--radius);
+  padding: 0;
+
+  width: min(90vw, 550px);
+  max-height: 90vh;
+
+  background-color: var(--primary-color);
+  color: var(--primary-text);
+
+  box-shadow: var(--shadow-lg);
+  overflow-y: auto;
+}
+
+/* Mørk baggrund bag booking-vinduet */
+#booking-dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.55);
+}
+
+/* Indholdet inde i dialogen */
+.booking-dialog-content {
+  position: relative;
+  padding: 2.5rem;
+}
+
+.booking-dialog-content h2 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: var(--primary-text);
+}
+
+.booking-dialog-content > p {
+  margin-top: 0;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+}
+
+/* Formular */
+#booking-form {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.booking-field {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.booking-field label {
+  font-weight: 600;
+}
+
+.booking-field input {
+  width: 100%;
+  box-sizing: border-box;
+
+  padding: 0.75rem;
+
+  font: inherit;
+  color: var(--secondary-text);
+
+  background-color: var(--background);
+
+  border: 2px solid transparent;
+  border-radius: 0.5rem;
+}
+
+/* Fokus med tastatur */
+.booking-field input:focus-visible {
+  outline: 3px solid var(--primary-text);
+  outline-offset: 3px;
+}
+
+/* Rød Book bord-knap */
+.booking-submit {
+  margin-top: 0.5rem;
+
+  padding: 0.8rem 1.25rem;
+
+  font: inherit;
+  font-weight: 600;
+
+  color: var(--primary-text);
+  background-color: var(--accent-color);
+
+  border: none;
+  border-radius: 0.75rem;
+
+  cursor: pointer;
+}
+
+.booking-submit:hover {
+  background-color: #991216;
+}
+
+.booking-submit:focus-visible {
+  outline: 3px solid var(--primary-text);
+  outline-offset: 3px;
+}
+
+/* Kryds øverst til højre */
+.close-booking {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+
+  width: 2.5rem;
+  height: 2.5rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  font-size: 1.25rem;
+  line-height: 1;
+
+  color: var(--primary-text);
+  background-color: var(--accent-color);
+
+  border: none;
+  border-radius: 50%;
+
+  cursor: pointer;
+}
+
+.close-booking:hover {
+  background-color: #991216;
+}
+
+.close-booking:focus-visible {
+  outline: 3px solid var(--primary-text);
+  outline-offset: 3px;
+}
+
+/* Stop siden bag dialogen fra at scrolle */
+body:has(#booking-dialog[open]) {
+  overflow: hidden;
+}
+
+/* Mobil */
+@media (max-width: 600px) {
+  .booking-dialog-content {
+    padding: 2rem 1.25rem 1.5rem;
+  }
+
+  #booking-dialog {
+    width: calc(100% - 2rem);
+  }
+}
