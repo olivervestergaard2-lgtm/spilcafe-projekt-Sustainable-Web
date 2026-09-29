@@ -90,7 +90,7 @@ main {
 }
 
 .filter-group label {
-  color: var(--primary-text);
+  color: #ffffff;
   font-weight: 600;
 }
 
@@ -254,6 +254,7 @@ header {
 .footer-info p {
   margin: 0;
   line-height: 1.6;
+  color: #ffffff;
 }
 
 .footer-info h2 {
@@ -353,8 +354,8 @@ header {
 
 /* Se spil CTA */
 .game-button {
-  background-color: var(--accent-color);
-  color: var(--primary-text);
+  background-color: #991216;
+  color: #ffffff;
   border: none;
   border-radius: 0.75rem;
   padding: 0.7rem 1.2rem;
@@ -365,7 +366,7 @@ header {
 }
 
 .game-button:hover {
-  background-color: #991216;
+  background-color: #7a0e12;
   transform: translateY(-2px);
 }
 
