@@ -14,7 +14,7 @@
     <!-- Header -->
     <header>
       <div class="header-content">
-        <a href="#" class="logo" aria-label="Spilcafé - gå til toppen">
+        <a href="#" class="logo" aria-label="Gå til toppen af siden">
           <img src="images/spilcafe.logo.webp" alt="Spilcafé" />
         </a>
 
@@ -36,14 +36,13 @@
       </section>
 
       <!-- Spiloversigt -->
-      <section class="games-section">
-        <h2>Spiloversigt</h2>
+      <section class="games-section" aria-labelledby="games-heading">
+        <h2 id="games-heading">Spiloversigt</h2>
 
-        <!-- Filterbar -->
-        <section class="filterbar">
+        <!-- Søgning, kategori og sortering -->
+        <div class="filterbar">
           <div class="filter-row-main">
 
-            <!-- Søg -->
             <div class="filter-group search-group">
               <label for="search-input">Søg efter spil</label>
               <input
@@ -53,7 +52,6 @@
               />
             </div>
 
-            <!-- Kategori -->
             <div class="filter-group">
               <label for="genre-select">Kategori</label>
               <select id="genre-select">
@@ -62,7 +60,6 @@
               </select>
             </div>
 
-            <!-- Sortering -->
             <div class="filter-group">
               <label for="sort-select">Sortering</label>
               <select id="sort-select">
@@ -73,37 +70,41 @@
             </div>
 
           </div>
-        </section>
+        </div>
 
-        <!-- Spil indsættes dynamisk her -->
-        <section id="game-list" class="game-grid"></section>
+        <!-- Spil indsættes dynamisk via JavaScript -->
+        <div id="game-list" class="game-grid"></div>
       </section>
     </main>
 
     <!-- Footer -->
-   <footer class="site-footer">
-  <div class="footer-content">
+    <footer class="site-footer">
+      <div class="footer-content">
 
-    <div class="footer-brand">
-      <p>Brætspil, hygge og gode stunder.</p>
-    </div>
+        <div class="footer-brand">
+          <p>Brætspil, hygge og gode stunder.</p>
+        </div>
 
-    <div class="footer-info">
-      <h2>Spilcaféen</h2>
-      <p>Find dit næste spil og book et bord til en hyggelig stund.</p>
-    </div>
+        <div class="footer-info">
+          <h2>Spilcaféen</h2>
+          <p>Find dit næste spil og book et bord til en hyggelig stund.</p>
+        </div>
 
-    <div class="footer-action">
-      <button type="button" class="book-button" id="footer-booking">
-        Book bord
-      </button>
-    </div>
+        <div class="footer-action">
+          <button type="button" class="book-button" id="footer-booking">
+            Book bord
+          </button>
+        </div>
 
-  </div>
-</footer>
+      </div>
+    </footer>
 
     <!-- Dialog til booking af bord -->
-    <dialog id="booking-dialog">
+    <dialog
+      id="booking-dialog"
+      aria-labelledby="booking-heading"
+      aria-describedby="booking-description"
+    >
       <div class="booking-dialog-content">
 
         <button
@@ -115,9 +116,11 @@
           ✕
         </button>
 
-        <h2>Book et bord</h2>
+        <h2 id="booking-heading">Book et bord</h2>
 
-        <p>Vælg dato, tidspunkt og antal personer.</p>
+        <p id="booking-description">
+          Vælg dato, tidspunkt og antal personer.
+        </p>
 
         <form id="booking-form">
           <div class="booking-field">
@@ -158,7 +161,6 @@
               id="booking-guests"
               name="guests"
               min="1"
-              max="12"
               required
             />
           </div>
@@ -172,9 +174,15 @@
     </dialog>
 
     <!-- Dialog med spildetaljer -->
-    <dialog id="game-dialog">
+    <dialog id="game-dialog" aria-labelledby="game-dialog-heading">
       <form method="dialog">
-        <button id="close-dialog" aria-label="Luk">✕</button>
+        <button
+          type="submit"
+          id="close-dialog"
+          aria-label="Luk spildetaljer"
+        >
+          ✕
+        </button>
 
         <div id="dialog-content">
           <!-- Spildetaljer indsættes dynamisk via JavaScript -->
